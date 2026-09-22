@@ -4,187 +4,433 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TypeBlaze | Digital Typing Studio</title>
+<title>TypeBlaze | Premium Typing Studio</title>
+<meta name="description" content="TypeBlaze offers professional typing, resume design, document formatting and PDF conversion services.">
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Arial,sans-serif;background:#090914;color:white}
-header{padding:22px 8%;display:flex;justify-content:space-between;align-items:center;background:#111122;position:sticky;top:0;z-index:5}
-.logo{font-size:25px;font-weight:bold;color:#b58cff}
-nav a{color:white;text-decoration:none;margin-left:18px;font-size:14px}
-.hero{text-align:center;padding:95px 20px 80px;background:radial-gradient(ellipse at top,#442080,#090914 65%)}
-.hero h1{font-size:clamp(38px,7vw,75px);margin-bottom:18px}
-.hero h1 span{color:#b58cff}
-.hero p{color:#c8c4d7;line-height:1.7}
-.btn{display:inline-block;background:#9b5cff;color:white;padding:14px 25px;border:0;border-radius:9px;text-decoration:none;font-weight:bold;cursor:pointer;margin-top:24px}
-section{padding:65px 8%}
-.heading{text-align:center;font-size:32px;margin-bottom:30px}
-.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:20px}
-.card{background:#151526;padding:25px;border:1px solid #292943;border-radius:15px;transition:.3s}
-.card:hover{transform:translateY(-7px);border-color:#a66aff}
-.card h3{margin-bottom:12px;color:#c5a3ff}
-.card p{color:#c6c3d5;line-height:1.6;font-size:14px}
-.price{font-size:23px;margin-top:18px;font-weight:bold}
-form{max-width:600px;margin:auto;background:#151526;padding:25px;border-radius:15px}
-label{display:block;margin:15px 0 7px}
-input,select,textarea{width:100%;padding:13px;border-radius:8px;border:1px solid #393950;background:#0d0d1a;color:white}
-textarea{min-height:90px}
-form .btn{width:100%}
-.note{text-align:center;color:#aaa;font-size:13px;margin-top:15px}
-footer{text-align:center;padding:30px;background:#111122;color:#aaa}
-@media(max-width:600px){header{padding:18px 5%}nav a{margin-left:8px;font-size:12px}section{padding:50px 5%}}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+:root{
+  --bg:#080811;
+  --panel:#131321;
+  --purple:#a855f7;
+  --gold:#f8c76b;
+  --text:#fff;
+  --muted:#aaa9c2;
+}
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+body{
+  font-family:Inter,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+body:before{
+  content:"";
+  position:fixed;
+  width:450px;height:450px;
+  background:#7c3aed22;
+  filter:blur(100px);
+  top:10%;left:-180px;
+  pointer-events:none;z-index:-1;
+}
+header{
+  position:sticky;top:0;z-index:10;
+  display:flex;justify-content:space-between;
+  align-items:center;gap:15px;
+  padding:18px 7%;
+  background:#080811dd;
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid #ffffff12;
+}
+.logo{font-size:24px;font-weight:900;color:var(--gold)}
+nav{display:flex;gap:22px;flex-wrap:wrap}
+nav a{color:#ddd;text-decoration:none;font-size:13px}
+nav a:hover{color:var(--gold)}
+.hero{
+  min-height:82vh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;padding:90px 20px;
+  background:radial-gradient(ellipse at 50% 0%,#6326a955,transparent 65%);
+}
+.tag{
+  border:1px solid #a855f755;
+  background:#a855f711;
+  color:#d8b4fe;padding:10px 17px;
+  border-radius:40px;font-size:12px;
+  letter-spacing:1px;margin-bottom:25px;
+}
+.hero h1{
+  font-size:clamp(43px,8vw,88px);
+  font-weight:900;line-height:1.04;
+  letter-spacing:-4px;
+}
+.gradient{
+  background:linear-gradient(90deg,#c084fc,#f8c76b,#c084fc);
+  background-size:200%;
+  -webkit-background-clip:text;
+  color:transparent;
+  animation:shine 5s linear infinite;
+}
+@keyframes shine{to{background-position:200% center}}
+.hero p{
+  max-width:600px;color:var(--muted);
+  line-height:1.8;margin-top:25px;font-size:15px;
+}
+.btn{
+  display:inline-flex;align-items:center;
+  justify-content:center;gap:9px;
+  padding:15px 24px;border-radius:10px;
+  background:linear-gradient(120deg,#9333ea,#6d28d9);
+  color:white;text-decoration:none;
+  border:1px solid #ffffff20;
+  font-weight:700;font-size:13px;
+  cursor:pointer;transition:.3s;
+}
+.btn:hover{transform:translateY(-4px);box-shadow:0 12px 35px #9333ea55}
+.btn.gold{background:linear-gradient(120deg,#f8c76b,#c58a24);color:#160f04}
+.hero .btn{margin-top:32px}
+.stats{
+  display:flex;justify-content:center;gap:45px;
+  flex-wrap:wrap;margin-top:55px;
+}
+.stat strong{display:block;font-size:23px;color:var(--gold)}
+.stat span{font-size:11px;color:var(--muted)}
+section{padding:85px 8%}
+.section-head{text-align:center;margin-bottom:42px}
+.section-head h2{font-size:clamp(28px,5vw,43px);margin-bottom:12px}
+.section-head p{color:var(--muted);font-size:14px;line-height:1.7}
+.services{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:20px;
+}
+.card{
+  background:linear-gradient(145deg,#171728,#10101b);
+  border:1px solid #ffffff12;border-radius:18px;
+  padding:27px;transition:.35s;position:relative;overflow:hidden;
+}
+.card:hover{transform:translateY(-8px);border-color:#a855f788;box-shadow:0 15px 45px #0005}
+.card .emoji{font-size:30px;margin-bottom:18px}
+.card h3{font-size:17px;margin-bottom:12px}
+.card p{color:var(--muted);font-size:13px;line-height:1.8;min-height:65px}
+.price{color:var(--gold);font-weight:800;font-size:22px;margin:18px 0}
+.card small{color:#8e8da5;font-size:11px}
+.card .btn{width:100%;margin-top:15px}
+.band{
+  margin:0 8%;padding:40px;
+  border:1px solid #a855f733;border-radius:20px;
+  background:linear-gradient(110deg,#6d28d922,#f8c76b08);
+  text-align:center;
+}
+.band h2{font-size:clamp(23px,4vw,35px);margin-bottom:12px}
+.band p{color:var(--muted);font-size:14px;line-height:1.7}
+.order-wrap{
+  max-width:760px;margin:auto;
+  padding:32px;background:var(--panel);
+  border:1px solid #ffffff14;border-radius:20px;
+}
+form{display:grid;grid-template-columns:1fr 1fr;gap:17px}
+.field{display:flex;flex-direction:column;gap:9px}
+.field.full{grid-column:1/-1}
+label{font-size:12px;color:#d8d5e8;font-weight:600}
+input,select,textarea{
+  width:100%;padding:14px;
+  border:1px solid #343449;border-radius:9px;
+  background:#0b0b15;color:white;
+  font:inherit;font-size:13px;outline:none;
+}
+input:focus,select:focus,textarea:focus{border-color:var(--purple)}
+textarea{min-height:100px;resize:vertical}
+input[type=file]{font-size:12px}
+form .btn{width:100%;grid-column:1/-1}
+.note{font-size:11px;color:#999;line-height:1.7}
+.payment{text-align:center}
+.qr{
+  width:230px;max-width:100%;
+  border:8px solid white;border-radius:12px;
+  margin:25px auto;display:block;
+}
+.upi{color:var(--gold);font-weight:700;margin:12px}
+.steps{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px;
+}
+.step{
+  background:#131321;border:1px solid #ffffff10;
+  border-radius:14px;padding:23px;
+}
+.step b{color:var(--gold);font-size:24px}
+.step h3{margin:12px 0;font-size:15px}
+.step p{font-size:12px;color:var(--muted);line-height:1.7}
+footer{
+  padding:35px 8%;text-align:center;
+  background:#10101b;border-top:1px solid #ffffff12;
+}
+footer p{color:var(--muted);font-size:12px;line-height:1.8;margin-top:10px}
+.reveal{opacity:0;transform:translateY(25px);transition:opacity .7s,transform .7s}
+.reveal.show{opacity:1;transform:translateY(0)}
+@media(max-width:650px){
+  header{padding:16px 5%;flex-direction:column}
+  nav{justify-content:center;gap:15px}
+  .hero h1{letter-spacing:-2px}
+  section{padding:65px 5%}
+  .stats{gap:25px}
+  .order-wrap{padding:20px}
+  form{grid-template-columns:1fr}
+  .field.full{grid-column:auto}
+  form .btn{grid-column:auto}
+  .band{margin:0 5%;padding:28px 18px}
+}
 </style>
 </head>
+
 <body>
 
 <header>
   <div class="logo">⚡ TypeBlaze</div>
   <nav>
     <a href="#services">Services</a>
-    <a href="#order">Order</a>
+    <a href="#how">How It Works</a>
+    <a href="#order">Place Order</a>
     <a href="#payment">Payment</a>
   </nav>
 </header>
 
 <div class="hero">
-  <h1>Your Work.<br><span>Our Typing Magic.</span></h1>
-  <p>PDF typing, resume making, document formatting<br>
-  and more — simple, fast and affordable.</p>
-  <a class="btn" href="#order">START YOUR ORDER ↗</a>
+  <div class="tag">✦ YOUR PREMIUM DIGITAL TYPING STUDIO</div>
+  <h1>Your Work.<br><span class="gradient">Our Typing Magic.</span></h1>
+  <p>From PDF typing to professional resumes, we transform your documents into polished, ready-to-use work. Simple, reliable and affordable.</p>
+  <a class="btn gold" href="#services">EXPLORE OUR SERVICES ↗</a>
+  <div class="stats">
+    <div class="stat"><strong>10+</strong><span>Typing Solutions</span></div>
+    <div class="stat"><strong>Easy</strong><span>WhatsApp Ordering</span></div>
+    <div class="stat"><strong>₹30</strong><span>Starting Price</span></div>
+  </div>
 </div>
 
 <section id="services">
-  <h2 class="heading">Our Services</h2>
+  <div class="section-head reveal">
+    <h2>Our <span class="gradient">Premium Services</span></h2>
+    <p>Choose your service and start your order in seconds.</p>
+  </div>
+
   <div class="services">
-    <div class="card">
-      <h3>⌨ PDF Typing</h3>
-      <p>Scanned or handwritten notes into editable documents.</p>
-      <div class="price">₹30 / page</div>
+
+    <div class="card reveal">
+      <div class="emoji">⌨️</div>
+      <h3>PDF / Image Typing</h3>
+      <p>Convert scanned PDFs, images and handwritten notes into editable documents.</p>
+      <div class="price">₹30 <small>/ page onwards</small></div>
+      <button class="btn" onclick="chooseService('PDF / Image Typing')">Order This ↗</button>
     </div>
-    <div class="card">
-      <h3>📄 Resume Making</h3>
-      <p>Clean and professional resumes for students and job seekers.</p>
-      <div class="price">₹149 onwards</div>
+
+    <div class="card reveal">
+      <div class="emoji">📄</div>
+      <h3>Resume Making</h3>
+      <p>Modern, professional resumes for students, freshers and job seekers.</p>
+      <div class="price">₹149 <small>onwards</small></div>
+      <button class="btn" onclick="chooseService('Resume Making')">Order This ↗</button>
     </div>
-    <div class="card">
-      <h3>✨ Document Formatting</h3>
-      <p>Organize your Word files, assignments and reports.</p>
-      <div class="price">₹79 onwards</div>
+
+    <div class="card reveal">
+      <div class="emoji">✨</div>
+      <h3>Document Formatting</h3>
+      <p>Professional layout, spacing, headings and formatting for Word documents.</p>
+      <div class="price">₹79 <small>onwards</small></div>
+      <button class="btn" onclick="chooseService('Document Formatting')">Order This ↗</button>
     </div>
-    <div class="card">
-      <h3>🌐 Hindi / English Typing</h3>
-      <p>Typing for letters, applications and general documents.</p>
-      <div class="price">₹30 / page</div>
+
+    <div class="card reveal">
+      <div class="emoji">🌐</div>
+      <h3>Hindi / English Typing</h3>
+      <p>Letters, applications and general documents in Hindi or English.</p>
+      <div class="price">₹30 <small>/ page onwards</small></div>
+      <button class="btn" onclick="chooseService('Hindi / English Typing')">Order This ↗</button>
     </div>
+
+    <div class="card reveal">
+      <div class="emoji">🎓</div>
+      <h3>Project & Assignment</h3>
+      <p>Clean typing and formatting for school projects, assignments and reports.</p>
+      <div class="price">₹99 <small>onwards</small></div>
+      <button class="btn" onclick="chooseService('Project & Assignment')">Order This ↗</button>
+    </div>
+
+    <div class="card reveal">
+      <div class="emoji">📊</div>
+      <h3>Data Entry</h3>
+      <p>Accurate data entry and organized information in Word or Excel formats.</p>
+      <div class="price">₹99 <small>onwards</small></div>
+      <button class="btn" onclick="chooseService('Data Entry')">Order This ↗</button>
+    </div>
+
+    <div class="card reveal">
+      <div class="emoji">📝</div>
+      <h3>Letter & Application</h3>
+      <p>Neatly typed formal letters, applications and business documents.</p>
+      <div class="price">₹49 <small>onwards</small></div>
+      <button class="btn" onclick="chooseService('Letter & Application')">Order This ↗</button>
+    </div>
+
+    <div class="card reveal">
+      <div class="emoji">🔄</div>
+      <h3>Word / PDF Conversion</h3>
+      <p>Convert documents into useful formats with clean and readable output.</p>
+      <div class="price">₹49 <small>onwards</small></div>
+      <button class="btn" onclick="chooseService('Word / PDF Conversion')">Order This ↗</button>
+    </div>
+
+  </div>
+</section>
+
+<div class="band reveal">
+  <h2>Got a document to type?</h2>
+  <p>Share your requirements, select your service and send your order directly through WhatsApp.</p>
+  <a href="#order" class="btn gold">START YOUR ORDER ↗</a>
+</div>
+
+<section id="how">
+  <div class="section-head reveal">
+    <h2>How It <span class="gradient">Works</span></h2>
+    <p>Three simple steps to get your work started.</p>
+  </div>
+  <div class="steps">
+    <div class="step reveal"><b>01</b><h3>Choose a Service</h3><p>Select the typing service you need and enter your requirements.</p></div>
+    <div class="step reveal"><b>02</b><h3>Send Your Order</h3><p>Submit your details through WhatsApp and attach your document there.</p></div>
+    <div class="step reveal"><b>03</b><h3>Confirm & Pay</h3><p>Confirm final price and delivery time before making payment.</p></div>
   </div>
 </section>
 
 <section id="order">
-  <h2 class="heading">Place Your Order</h2>
-  <form id="orderForm">
-    <label>Your Name</label>
-    <input id="name" required placeholder="Enter your name">
+  <div class="section-head reveal">
+    <h2>Place Your <span class="gradient">Order</span></h2>
+    <p>Fill in your details. Your order summary will open in WhatsApp.</p>
+  </div>
 
-    <label>WhatsApp Number</label>
-    <input id="phone" required type="tel" placeholder="Your mobile number">
+  <div class="order-wrap reveal">
+    <form id="orderForm">
 
-    <label>Select Service</label>
-    <select id="service" required>
-      <option value="">Choose a service</option>
-      <option>PDF Typing</option>
-      <option>Resume Making</option>
-      <option>Document Formatting</option>
-      <option>Hindi / English Typing</option>
-    </select>
+      <div class="field">
+        <label for="name">Full Name *</label>
+        <input id="name" required maxlength="80" placeholder="Enter your name">
+      </div>
 
-    <label>Pages / Quantity</label>
-    <input id="quantity" type="number" min="1" value="1" required>
+      <div class="field">
+        <label for="phone">Your WhatsApp Number *</label>
+        <input id="phone" required type="tel" maxlength="15" placeholder="Enter mobile number">
+      </div>
 
-    <label>Instructions</label>
-    <textarea id="details" placeholder="Tell us about your work"></textarea>
+      <div class="field full">
+        <label for="service">Select Service *</label>
+        <select id="service" required>
+          <option value="">Choose a service</option>
+          <option>PDF / Image Typing</option>
+          <option>Resume Making</option>
+          <option>Document Formatting</option>
+          <option>Hindi / English Typing</option>
+          <option>Project & Assignment</option>
+          <option>Data Entry</option>
+          <option>Letter & Application</option>
+          <option>Word / PDF Conversion</option>
+        </select>
+      </div>
 
-<label>Upload Your Document</label>
-<input
-  id="document"
-  type="file"
-  accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
->
+      <div class="field">
+        <label for="quantity">Pages / Quantity *</label>
+        <input id="quantity" type="number" min="1" max="10000" value="1" required>
+      </div>
 
-<p style="color:#aaa;font-size:12px;margin-top:8px;">
-  Select your document. You can attach it in WhatsApp
-  after sending your order.
-</p>
-    <button class="btn" type="submit">ORDER VIA WHATSAPP ↗</button>
-    <p class="note">Final price and delivery time will be confirmed before work begins.</p>
-  </form>
+      <div class="field">
+        <label for="deadline">Preferred Deadline</label>
+        <input id="deadline" type="date">
+      </div>
+
+      <div class="field full">
+        <label for="details">Instructions</label>
+        <textarea id="details" maxlength="1500" placeholder="Describe your work, language, formatting, etc."></textarea>
+      </div>
+
+      <div class="field full">
+        <label for="file">Document (optional)</label>
+        <input id="file" type="file" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.txt">
+        <p class="note">The file is not uploaded automatically. Attach it manually in WhatsApp after the chat opens.</p>
+      </div>
+
+      <button class="btn gold" type="submit">SEND ORDER VIA WHATSAPP ↗</button>
+      <p class="note field full">Final price and delivery time will be confirmed before work begins. Do not send highly sensitive documents unless necessary.</p>
+    </form>
+  </div>
 </section>
 
-<div style="
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  width:100%;
-  text-align:center;
-  margin:25px auto;
-">
+<section id="payment">
+  <div class="section-head reveal">
+    <h2>Secure & Simple <span class="gradient">Payment</span></h2>
+    <p>Confirm your order total with us before making a payment.</p>
+  </div>
+  <div class="payment reveal">
+    <img class="qr" src="./upi-qr.png.png" alt="TypeBlaze UPI QR Code">
+    <h3>Scan & Pay with UPI</h3>
+    <p class="upi">UPI ID: avengerayush@fam</p>
+    <p class="note">Please verify the recipient name and amount in your UPI app before paying.</p>
+  </div>
+</section>
 
-  <img src="./upi-qr.png.png"
-       alt="UPI QR Code"
-       style="
-         display:block;
-         width:250px;
-         max-width:100%;
-         height:auto;
-         margin:0 auto;
-         border:10px solid white;
-         border-radius:12px;
-       ">
-
-  <h3 style="margin-top:20px;color:#b58cff;">
-    Scan & Pay with UPI
-  </h3>
-
-  <p style="color:white;margin-top:12px;">
-    UPI ID: avengerayush@fam
-  </p>
-
-</div>
-
-<h3>Scan & Pay with UPI</h3>
-
-<p>UPI ID: avengerayush@fam</p>
 <footer>
-  ⚡ TypeBlaze — Your Digital Typing Studio
-  <p style="margin-top:10px">Made with passion by Ayush Dwivedi</p>
+  <div class="logo">⚡ TypeBlaze</div>
+  <p>Your Digital Typing Studio</p>
+  <p>Made with passion by Ayush Dwivedi ✦</p>
+  <p>© 2026 TypeBlaze. All rights reserved.</p>
 </footer>
 
 <script>
+const YOUR_WHATSAPP_NUMBER = "917905820638";
+
+function chooseService(service){
+  document.getElementById("service").value = service;
+  document.getElementById("order").scrollIntoView({behavior:"smooth"});
+}
+
 document.getElementById("orderForm").addEventListener("submit",function(e){
   e.preventDefault();
 
-  const name=document.getElementById("name").value;
-  const phone=document.getElementById("phone").value;
-  const service=document.getElementById("service").value;
-  const quantity=document.getElementById("quantity").value;
-  const details=document.getElementById("details").value;
+  const name = document.getElementById("name").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const service = document.getElementById("service").value;
+  const quantity = document.getElementById("quantity").value;
+  const details = document.getElementById("details").value.trim();
+  const deadline = document.getElementById("deadline").value;
+  const file = document.getElementById("file").files[0];
 
-  const message=`Hello TypeBlaze! I want to place an order.
-
-Name: ${name}
-My WhatsApp: ${phone}
-Service: ${service}
-Quantity: ${quantity}
-Instructions: ${details}`;
-
-  const YOUR_WHATSAPP_NUMBER="917905820638";
-
-  if(YOUR_WHATSAPP_NUMBER.includes("X")){
-    alert("First, add your WhatsApp number in the website code.");
+  if(!name || !phone || !service || Number(quantity) < 1){
+    alert("Please fill all required fields correctly.");
     return;
   }
 
-  window.open("https://wa.me/"+YOUR_WHATSAPP_NUMBER+"?text="+encodeURIComponent(message),"_blank");
+  const message = `Hello TypeBlaze! I want to place an order.
+
+Name: ${name}
+WhatsApp: ${phone}
+Service: ${service}
+Quantity: ${quantity}
+Preferred Deadline: ${deadline || "Not specified"}
+Instructions: ${details || "None"}
+Selected File: ${file ? file.name : "Will share later"}
+
+Please confirm the final price and delivery time.`;
+
+  const url = "https://wa.me/" + YOUR_WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
+  window.open(url,"_blank");
 });
+
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:0.12});
+
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
 </script>
 
 </body>
